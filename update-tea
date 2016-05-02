@@ -1,0 +1,24 @@
+<?php
+
+$name=$class=$sub_tght="";
+$name=$_POST["name"];
+$cls=$_POST["class"];
+$sub_tght=$_POST["sub_tght"];
+
+$connect = mysql_connect("localhost","root","");
+  if(!$connect)
+  die("Server Not connected");
+  $db = mysql_select_db("login",$connect);
+  if(!$db)
+  die("Database not Connected");
+
+  $id = $_POST["id"];
+
+  $sql="UPDATE teachers 
+        SET name='$name',class='$cls',sub_tght='$sub_tght'
+        WHERE id=$id";
+  mysql_query($sql);
+
+  header("location:teacher.php");
+
+?>
